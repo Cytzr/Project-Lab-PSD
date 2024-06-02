@@ -2,8 +2,8 @@
     [UserID]       INT NOT NULL,
     [StationeryID] INT NOT NULL,
     [Quantity]     INT NOT NULL,
-    CONSTRAINT [FK_Cart_ToMsStationery] FOREIGN KEY ([StationeryID]) REFERENCES [dbo].[MsStationery] ([StationeryID]),
-    CONSTRAINT [FK_Cart_ToMsUser] FOREIGN KEY ([UserID]) REFERENCES [dbo].[MsUser] ([UserID])
+    CONSTRAINT [FK_Cart_ToMsUser] FOREIGN KEY ([UserID]) REFERENCES [dbo].[MsUser] ([UserID]),
+    CONSTRAINT [FK_Cart_ToMsStationery] FOREIGN KEY ([StationeryID]) REFERENCES [dbo].[MsStationery] ([StationeryID])
 );
 
 CREATE TABLE [dbo].[MsStationery] (
