@@ -12,48 +12,90 @@ namespace Project_Lab_PSD.Repositories
 
         public List<TransactionHeader> GetAllTransactionHeader()
         {
-            return _context.TransactionHeaders.ToList();
+            try
+            {
+                return _context.TransactionHeaders.ToList();
+            }
+            catch
+            {
+                return null;
+            }
         }
 
         public int GetLastTransactionHeaderID()
         {
-            return _context.TransactionHeaders.LastOrDefault().TransactionID;
+            try
+            {
+                return _context.TransactionHeaders.LastOrDefault().TransactionID;
+            }
+            catch
+            {
+                return null;
+            }
         }
 
         public TransactionHeader GetTransactionHeaderByID(int transactionHeaderID)
         {
-            return (from a in _context.TransactionHeaders
-                    where a.TransactionID == transactionHeaderID
-                    select a).FirstOrDefault();
+            try
+            {
+                return (from a in _context.TransactionHeaders
+                        where a.TransactionID == transactionHeaderID
+                        select a).FirstOrDefault();
+            }
+            catch
+            {
+                return null;
+            }
         }
         
         public List<TransactionHeader> GetTransactionHeaderByUserID(int userID)
         {
-            return (from a in _context.TransactionHeaders
-                    where a.UserID == userID
-                    select a).ToList();
+            try
+            {
+                return (from a in _context.TransactionHeaders
+                        where a.UserID == userID
+                        select a).ToList();
+            }
+            catch
+            {
+                return null;
+            }
         }
 
         public void AddTransactionHeader(TransactionHeader transactionHeader)
         {
-            _context.TransactionHeaders.Add(transactionHeader);
-            _context.SaveChanges();
+            try
+            {
+                _context.TransactionHeaders.Add(transactionHeader);
+                _context.SaveChanges();
+            }
+            catch
+            {
+                throw new Exception();
+            }
         }
 
         public TransactionHeader DeleteTransactionHeader(int id)
         {
-            TransactionDetail tempDetail = (from a in _context.TransactionDetails
-                                            where a.TransactionID == id
-                                            select a).FirstOrDefault();
-            _context.TransactionDetails.Remove(tempDetail);
+            try
+            {
+                TransactionDetail tempDetail = (from a in _context.TransactionDetails
+                                                where a.TransactionID == id
+                                                select a).FirstOrDefault();
+                _context.TransactionDetails.Remove(tempDetail);
 
-            TransactionHeader tempHeader = (from a in _context.TransactionHeaders
-                                      where a.TransactionID == id
-                                      select a).FirstOrDefault();
-            _context.TransactionHeaders.Remove(tempHeader);
+                TransactionHeader tempHeader = (from a in _context.TransactionHeaders
+                                                where a.TransactionID == id
+                                                select a).FirstOrDefault();
+                _context.TransactionHeaders.Remove(tempHeader);
 
-            _context.SaveChanges();
-            return tempHeader;
+                _context.SaveChanges();
+                return tempHeader;
+            }
+            catch
+            {
+                return null;
+            }
         }
     }
 }
