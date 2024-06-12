@@ -73,15 +73,21 @@ namespace Project_Lab_PSD.Repositories
 
         public MsUser Login(string userName, string userPassword)
         {
-            MsUser temp = (from a in _context.MsUsers
-                           where a.UserName == userName && a.UserPassword == userPassword
-                           select a).FirstOrDefault();
+            try {
+                MsUser temp = (from a in _context.MsUsers
+                               where a.UserName == userName && a.UserPassword == userPassword
+                               select a).FirstOrDefault();
 
-            if (temp != null)
-            {
-                return temp;
+                if (temp != null)
+                {
+                    return temp;
+                }
+                return null;
             }
-            return null;
+            catch
+            {
+                return null;
+            }
         }
     }
 }
