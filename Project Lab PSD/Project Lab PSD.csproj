@@ -93,6 +93,7 @@
     <Content Include="Views\Admin\AdminProfilePage.aspx" />
     <Content Include="Views\Admin\AdminStationeryPage.aspx" />
     <Content Include="Views\Admin\AdminTransactionReportPage.aspx" />
+    <Content Include="Views\Admin\InsertStationery.aspx" />
     <Content Include="Views\Customer\CustomerCartPage.aspx" />
     <Content Include="Views\Customer\CustomerProfilePage.aspx" />
     <Content Include="Views\Customer\CustomerStationeryPage.aspx" />
@@ -176,6 +177,13 @@
     </Compile>
     <Compile Include="Views\Admin\AdminTransactionReportPage.aspx.designer.cs">
       <DependentUpon>AdminTransactionReportPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\InsertStationery.aspx.cs">
+      <DependentUpon>InsertStationery.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Admin\InsertStationery.aspx.designer.cs">
+      <DependentUpon>InsertStationery.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Customer\CustomerCartPage.aspx.cs">
       <DependentUpon>CustomerCartPage.aspx</DependentUpon>

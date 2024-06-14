@@ -17,7 +17,6 @@ namespace Project_Lab_PSD.Handlers
         public Response<List<MsStationery>> ViewStationeries()
         {
             List<MsStationery> temp = stationeryRepo.GetAllStationery();
-
             return new Response<List<MsStationery>>()
             {
                 IsSuccess = true,
