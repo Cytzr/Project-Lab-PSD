@@ -67,10 +67,12 @@ namespace Project_Lab_PSD.Handlers
                 };
 
                 transactionHeaderRepo.AddTransactionHeader(th);
-                
+
+                int tdID = transactionHeaderRepo.GetLastTransactionHeaderID();
+
                 TransactionDetail td = new TransactionDetail()
                 {
-                    TransactionID = transactionHeaderRepo.GetLastTransactionHeaderID(),
+                    TransactionID = tdID,
                     StationeryID = cart.StationeryID,
                     Quantity = cart.Quantity,
                 };
