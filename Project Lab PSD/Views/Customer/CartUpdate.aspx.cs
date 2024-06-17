@@ -28,11 +28,11 @@ namespace Project_Lab_PSD.Views.Customer
             }
         }
 
-        protected void btnaddtocart_click(object sender, EventArgs e)
+        protected void btnUpdateCart_click(object sender, EventArgs e)
         {
             int userID = 2;
             int id = Convert.ToInt32(Request["ID"]);
-            int quantity = 10;
+            int quantity = Convert.ToInt32(txtQuantity.Text);
             Response<Cart> response = customerHandler.UpdateCart(userID, id, quantity);
         }
     }

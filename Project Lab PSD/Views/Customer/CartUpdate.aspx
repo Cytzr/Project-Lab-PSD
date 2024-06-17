@@ -19,7 +19,7 @@
     </div>
 
     <div>
-        <asp:button id="btnaddtocart" runat="server" text="add to cart" onclick="btnaddtocart_click" />
+        <asp:button id="btnupdatecart" runat="server" text="Update Stationary" onclick="btnUpdateCart_click" />
     </div>
 
     <div>

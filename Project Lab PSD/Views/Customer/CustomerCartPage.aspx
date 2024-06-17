@@ -5,7 +5,7 @@
 
     <h1>Cart</h1>
 
-    <asp:GridView ID="cartGrid" runat="server" AutoGenerateColumns ="False" >
+    <asp:GridView ID="cartGrid" runat="server" AutoGenerateColumns ="False" OnRowDeleting="cartGrid_RowDeleting" OnRowUpdating="cartGrid_RowUpdating" >
         <Columns>
 
             <asp:BoundField DataField="StationeryName" HeaderText="Name" SortExpression="StationeryName" />

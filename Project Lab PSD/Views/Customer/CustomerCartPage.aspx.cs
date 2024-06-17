@@ -20,7 +20,7 @@ namespace Project_Lab_PSD.Views.Customer
             if (!IsPostBack)
             {
                 int userID = int.Parse(Request.Cookies["user_cookie"]?.Value);
-           
+                
                 Response<List<CartDisplayModel>> response = customerHandler.ViewCarts(userID);
                 cartGrid.DataSource = response.PassValue;
 
@@ -33,6 +33,34 @@ namespace Project_Lab_PSD.Views.Customer
                     Console.WriteLine("No Data");
                 }
             }
+        }
+
+        protected void cartGrid_RowUpdating(object sender,  GridViewUpdateEventArgs e)
+        {
+            GridViewRow row = cartGrid.Rows[e.RowIndex];
+
+            string stringId = row.Cells[0].Text.ToString();
+
+            int id = 0;
+
+            int.TryParse(stringId, out id);
+
+            Response.Redirect($"CartUpdate.aspx?CartID={id}");
+        }
+
+        protected void cartGrid_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            int userID = 2;
+
+            GridViewRow row = cartGrid.Rows[e.RowIndex];
+
+            string stringId = row.Cells[0].Text.ToString();
+
+            int id = 0;
+
+            int.TryParse(stringId, out id);
+
+            Response<Cart> deleteResponse = customerHandler.DeleteCart(userID, id);
         }
 
         protected void Checkout_Click(object sender, EventArgs e)
