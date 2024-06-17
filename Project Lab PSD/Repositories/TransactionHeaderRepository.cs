@@ -30,7 +30,7 @@ namespace Project_Lab_PSD.Repositories
             }
             catch
             {
-                return null;
+                return 0;
             }
         }
 
