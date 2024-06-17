@@ -279,5 +279,24 @@ namespace Project_Lab_PSD.Handlers
                 PassValue = null,
             };
         }
+        public Response<MsUser> UpdateProfileByID(int id, MsUser user)
+        {
+            MsUser updatedUser = userRepo.UpdateUserByID(id, user);
+            if (updatedUser != null)
+            {
+                return new Response<MsUser>()
+                {
+                    IsSuccess = true,
+                    Message = "User Updated",
+                    PassValue = updatedUser,
+                };
+            }
+            return new Response<MsUser>()
+            {
+                IsSuccess = false,
+                Message = "User Not Found",
+                PassValue = null,
+            };
+        }
     }
 }
