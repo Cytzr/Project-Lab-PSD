@@ -11,7 +11,6 @@ warning 6002: The table/view 'C:\DEVELOPMENT\GITHUB\PROJECT LAB PSD\PROJECT LAB 
           <Key>
             <PropertyRef Name="UserID" />
             <PropertyRef Name="StationeryID" />
-            <PropertyRef Name="Quantity" />
           </Key>
           <Property Name="UserID" Type="int" Nullable="false" />
           <Property Name="StationeryID" Type="int" Nullable="false" />
@@ -44,7 +43,6 @@ warning 6002: The table/view 'C:\DEVELOPMENT\GITHUB\PROJECT LAB PSD\PROJECT LAB 
           <Key>
             <PropertyRef Name="TransactionID" />
             <PropertyRef Name="StationeryID" />
-            <PropertyRef Name="Quantity" />
           </Key>
           <Property Name="TransactionID" Type="int" Nullable="false" />
           <Property Name="StationeryID" Type="int" Nullable="false" />
@@ -201,7 +199,6 @@ warning 6002: The table/view 'C:\DEVELOPMENT\GITHUB\PROJECT LAB PSD\PROJECT LAB 
           <Key>
             <PropertyRef Name="UserID" />
             <PropertyRef Name="StationeryID" />
-            <PropertyRef Name="Quantity" />
           </Key>
           <Property Name="UserID" Type="Int32" Nullable="false" />
           <Property Name="StationeryID" Type="Int32" Nullable="false" />
@@ -213,7 +210,6 @@ warning 6002: The table/view 'C:\DEVELOPMENT\GITHUB\PROJECT LAB PSD\PROJECT LAB 
           <Key>
             <PropertyRef Name="TransactionID" />
             <PropertyRef Name="StationeryID" />
-            <PropertyRef Name="Quantity" />
           </Key>
           <Property Name="TransactionID" Type="Int32" Nullable="false" />
           <Property Name="StationeryID" Type="Int32" Nullable="false" />
