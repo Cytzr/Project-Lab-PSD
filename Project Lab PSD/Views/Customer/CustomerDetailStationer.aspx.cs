@@ -27,8 +27,10 @@ namespace Project_Lab_PSD.Views.Customer
         }
         protected void btnAddToCart_Click(object sender, EventArgs e)
         {
-            int id = 2;
-            Response<List<Cart>> response = customerHandler.OrderStationeries(id);
+            int userID = 2;
+            int id = Convert.ToInt32(Request["ID"]);
+            int quantity = Convert.ToInt32(txtQuantity.Text);
+            Response<List<Cart>> response = customerHandler.AddCart();
 
             if (response.IsSuccess)
             {

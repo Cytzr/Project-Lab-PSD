@@ -19,11 +19,21 @@ namespace Project_Lab_PSD.Views.Customer
             {
                 int userID = 2;
                 int id = Convert.ToInt32(Request["ID"]);
-                Response<MsStationery> response = customerHandler.GetStationeryById(id);
-                MsStationery user2 = response.PassValue;
+                Response<CartDisplayModel> response = customerHandler.GetOneCartDisplayModel(userID, id);
+                CartDisplayModel user2 = response.PassValue;
 
-
+                lblStationeryName.Text = user2.StationeryName;
+                lblStationeryPrice.Text = user2.StationeryPrice.ToString();
+                txtQuantity.Text = user2.Quantity.ToString();
             }
+        }
+
+        protected void btnUpdateCart_click(object sender, EventArgs e)
+        {
+            int userID = 2;
+            int id = Convert.ToInt32(Request["ID"]);
+            int quantity = Convert.ToInt32(txtQuantity.Text);
+            Response<Cart> response = customerHandler.UpdateCart(userID, id, quantity);
         }
     }
 }
