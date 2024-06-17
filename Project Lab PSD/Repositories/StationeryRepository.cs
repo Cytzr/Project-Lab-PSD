@@ -35,6 +35,13 @@ namespace Project_Lab_PSD.Repositories
             }
         }
 
+        public MsStationery GetStationeryByName(string stationeryName)
+        {
+            return (from a in _context.MsStationeries
+                    where a.StationeryName == stationeryName
+                    select a).FirstOrDefault();
+        }
+
         public void AddStationery(MsStationery stationery)
         {
             try
