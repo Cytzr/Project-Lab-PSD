@@ -97,6 +97,7 @@
     <Content Include="Views\Customer\CustomerProfilePage.aspx" />
     <Content Include="Views\Customer\CustomerStationeryPage.aspx" />
     <Content Include="Views\Customer\CustomerTransactionHistoryPage.aspx" />
+    <Content Include="Views\Guest\GuestStationaryDetail.aspx" />
     <Content Include="Views\Guest\GuestStationeryPage.aspx" />
     <Content Include="Views\Guest\GuestLoginPage.aspx" />
     <Content Include="Views\Guest\GuestRegisterPage.aspx" />
@@ -204,6 +205,13 @@
     </Compile>
     <Compile Include="Views\Customer\CustomerTransactionHistoryPage.aspx.designer.cs">
       <DependentUpon>CustomerTransactionHistoryPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Guest\GuestStationaryDetail.aspx.cs">
+      <DependentUpon>GuestStationaryDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Guest\GuestStationaryDetail.aspx.designer.cs">
+      <DependentUpon>GuestStationaryDetail.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Guest\GuestStationeryPage.aspx.cs">
       <DependentUpon>GuestStationeryPage.aspx</DependentUpon>

@@ -26,7 +26,7 @@ namespace Project_Lab_PSD.Views.Guest
         {
             string userName = txtUserName.Text;
             string password = txtPassword.Text;
-
+            
             GuestHandler guestHandler = new GuestHandler();
             Response<MsUser> response = guestHandler.Login(userName, password);
             MsUser user = response.PassValue;

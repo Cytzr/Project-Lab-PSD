@@ -15,7 +15,7 @@ namespace Project_Lab_PSD.Views.Navbar
         {
             if (Session["user"] == null && Response.Cookies["user_cookie"] == null)
             {
-                Response.Redirect("~/Views/GuestLoginPage.aspx");
+                Response.Redirect("~/Views/Guest/GuestLoginPage.aspx");
                 return;
             }
             if (Session["user"] == null)
@@ -26,7 +26,7 @@ namespace Project_Lab_PSD.Views.Navbar
                 if (us == null)
                 {
                     Response.Cookies["user_cookie"].Expires = DateTime.Now.AddDays(1);
-                    Response.Redirect("~/Views/GuestLoginPage.aspx");
+                    Response.Redirect("~/Views/Guest/GuestLoginPage.aspx");
                     return;
                 }
                 Session["user"] = us;
