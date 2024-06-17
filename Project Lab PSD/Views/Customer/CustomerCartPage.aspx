@@ -8,6 +8,7 @@
     <asp:GridView ID="cartGrid" runat="server" AutoGenerateColumns ="False" OnRowDeleting="cartGrid_RowDeleting" OnRowUpdating="cartGrid_RowUpdating" >
         <Columns>
 
+          
             <asp:BoundField DataField="StationeryName" HeaderText="Name" SortExpression="StationeryName" />
             <asp:BoundField DataField="StationeryPrice" HeaderText="Price" SortExpression="StationeryPrice" />
             <asp:BoundField DataField="Quantity" HeaderText="Quantity" SortExpression="Quantity" />

@@ -97,11 +97,9 @@
     <Content Include="Views\Customer\CustomerCartPage.aspx" />
     <Content Include="Views\Customer\CustomerDetailStationer.aspx" />
     <Content Include="Views\Customer\CustomerProfilePage.aspx" />
-    <Content Include="Views\Customer\CustomerStationeryDetail.aspx" />
     <Content Include="Views\Customer\CustomerStationeryPage.aspx" />
     <Content Include="Views\Customer\CustomerTransactionDetail.aspx" />
     <Content Include="Views\Customer\CustomerTransactionHistoryPage.aspx" />
-    <Content Include="Views\Customer\UpdateCartPage.aspx" />
     <Content Include="Views\Guest\GuestStationaryDetail.aspx" />
     <Content Include="Views\Guest\GuestStationeryPage.aspx" />
     <Content Include="Views\Guest\GuestLoginPage.aspx" />
@@ -212,13 +210,6 @@
     <Compile Include="Views\Customer\CustomerProfilePage.aspx.designer.cs">
       <DependentUpon>CustomerProfilePage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Views\Customer\CustomerStationeryDetail.aspx.cs">
-      <DependentUpon>CustomerStationeryDetail.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Customer\CustomerStationeryDetail.aspx.designer.cs">
-      <DependentUpon>CustomerStationeryDetail.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Views\Customer\CustomerStationeryPage.aspx.cs">
       <DependentUpon>CustomerStationeryPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -239,13 +230,6 @@
     </Compile>
     <Compile Include="Views\Customer\CustomerTransactionHistoryPage.aspx.designer.cs">
       <DependentUpon>CustomerTransactionHistoryPage.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Customer\UpdateCartPage.aspx.cs">
-      <DependentUpon>UpdateCartPage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Customer\UpdateCartPage.aspx.designer.cs">
-      <DependentUpon>UpdateCartPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Guest\GuestStationaryDetail.aspx.cs">
       <DependentUpon>GuestStationaryDetail.aspx</DependentUpon>

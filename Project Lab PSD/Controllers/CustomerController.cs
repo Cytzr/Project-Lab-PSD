@@ -56,14 +56,21 @@ namespace Project_Lab_PSD.Controllers
 
         public Response<Cart> AddCart(int userID, int stationeryID, int quantity)
         {
-            Cart cart = CartFactory.create_cart(userID, stationeryID, quantity);
-            cartRepo.InsertCart(cart);
-            return new Response<Cart>()
+            try
             {
-                IsSuccess = true,
-                Message = "Cart Inserted",
-                PassValue = cart,
-            };
+                Cart cart = CartFactory.create_cart(userID, stationeryID, quantity);
+                cartRepo.InsertCart(cart);
+                return new Response<Cart>()
+                {
+                    IsSuccess = true,
+                    Message = "Cart Inserted",
+                    PassValue = cart,
+                };
+            } catch(Exception ex)
+            {
+                throw ex;
+            }
+           
         }
 
         public Response<CartDisplayModel> GetOneCartDisplayModel(int userID, int stationeryID)

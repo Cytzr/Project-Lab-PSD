@@ -28,14 +28,16 @@ namespace Project_Lab_PSD.Views.Customer
         }
         protected void btnAddToCart_Click(object sender, EventArgs e)
         {
-            int userID = 2;
+            int userID = int.Parse(Request.Cookies["user_cookie"]?.Value);
             int id = Convert.ToInt32(Request["ID"]);
             int quantity = Convert.ToInt32(txtQuantity.Text);
-            Response<Cart> response = customerCont.AddCart(userID, id, quantity);
+           
+            CustomerController customer = new CustomerController();
+            Response<Cart> response = customer.AddCart(userID, id, quantity);
 
             if (response.IsSuccess)
             {
-                lblMessage.Text = "Stationary Added to Cart";
+                lblMessage.Text = "Stationery Added to cart";
             }
         }
     }
