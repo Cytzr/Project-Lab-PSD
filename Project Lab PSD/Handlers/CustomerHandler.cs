@@ -54,6 +54,17 @@ namespace Project_Lab_PSD.Handlers
             };
         }
 
+        public Response<Cart> AddCart (Cart cart)
+        {
+            cartRepo.InsertCart(cart);
+            return new Response<Cart>()
+            {
+                IsSuccess = true,
+                Message = "Cart Inserted",
+                PassValue = cart,
+            };
+        }
+
         public Response<CartDisplayModel> GetOneCartDisplayModel(int userID, int stationeryID)
         {
             var temp = cartRepo.GetCartByBothCredential(userID, stationeryID);

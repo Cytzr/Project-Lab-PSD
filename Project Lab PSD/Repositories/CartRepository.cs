@@ -96,6 +96,19 @@ namespace Project_Lab_PSD.Repositories
             }
         }
 
+        public void InsertCart(Cart cart)
+        {
+            try
+            {
+                _context.Carts.Add(cart);
+                _context.SaveChanges();
+            }
+            catch
+            {
+                return;
+            }
+        }
+
         public Cart UpdateCart(Cart cart)
         {
             try
