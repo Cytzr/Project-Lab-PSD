@@ -18,7 +18,7 @@ namespace Project_Lab_PSD.Views.Customer
         {
             if (!IsPostBack)
             {
-                int userID = 2;
+                int userID = int.Parse(Request.Cookies["user_cookie"]?.Value);
                 int id = Convert.ToInt32(Request["ID"]);
                 Response<CartDisplayModel> response = customerCont.GetOneCartDisplayModel(userID, id);
                 CartDisplayModel user2 = response.PassValue;
@@ -31,7 +31,7 @@ namespace Project_Lab_PSD.Views.Customer
 
         protected void btnUpdateCart_click(object sender, EventArgs e)
         {
-            int userID = 2;
+            int userID = int.Parse(Request.Cookies["user_cookie"]?.Value);
             int id = Convert.ToInt32(Request["ID"]);
             int quantity = Convert.ToInt32(txtQuantity.Text);
             Response<Cart> response = customerCont.UpdateCart(userID, id, quantity);

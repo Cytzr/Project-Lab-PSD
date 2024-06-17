@@ -51,7 +51,7 @@ namespace Project_Lab_PSD.Views.Customer
 
         protected void cartGrid_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
-            int userID = 2;
+            int userID = int.Parse(Request.Cookies["user_cookie"]?.Value);
 
             GridViewRow row = cartGrid.Rows[e.RowIndex];
 
