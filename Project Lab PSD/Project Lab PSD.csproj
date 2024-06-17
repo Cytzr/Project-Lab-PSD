@@ -93,7 +93,9 @@
     <Content Include="Views\Admin\AdminProfilePage.aspx" />
     <Content Include="Views\Admin\AdminStationeryPage.aspx" />
     <Content Include="Views\Admin\AdminTransactionReportPage.aspx" />
+    <Content Include="Views\Customer\CartUpdate.aspx" />
     <Content Include="Views\Customer\CustomerCartPage.aspx" />
+    <Content Include="Views\Customer\CustomerDetailStationer.aspx" />
     <Content Include="Views\Customer\CustomerProfilePage.aspx" />
     <Content Include="Views\Customer\CustomerStationeryPage.aspx" />
     <Content Include="Views\Customer\CustomerTransactionHistoryPage.aspx" />
@@ -178,12 +180,26 @@
     <Compile Include="Views\Admin\AdminTransactionReportPage.aspx.designer.cs">
       <DependentUpon>AdminTransactionReportPage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Views\Customer\CartUpdate.aspx.cs">
+      <DependentUpon>CartUpdate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Customer\CartUpdate.aspx.designer.cs">
+      <DependentUpon>CartUpdate.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Views\Customer\CustomerCartPage.aspx.cs">
       <DependentUpon>CustomerCartPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Views\Customer\CustomerCartPage.aspx.designer.cs">
       <DependentUpon>CustomerCartPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Customer\CustomerDetailStationer.aspx.cs">
+      <DependentUpon>CustomerDetailStationer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Customer\CustomerDetailStationer.aspx.designer.cs">
+      <DependentUpon>CustomerDetailStationer.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Customer\CustomerProfilePage.aspx.cs">
       <DependentUpon>CustomerProfilePage.aspx</DependentUpon>

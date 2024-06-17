@@ -54,6 +54,29 @@ namespace Project_Lab_PSD.Handlers
             };
         }
 
+        public Response<CartDisplayModel> GetOneCartDisplayModel(int userID, int stationeryID)
+        {
+            var temp = cartRepo.GetCartByBothCredential(userID, stationeryID);
+            if(temp == null)
+            {
+                return new Response<CartDisplayModel>()
+                {
+                    IsSuccess = true,
+                    Message = "Stationery Displayed",
+                    PassValue = temp,
+                };
+            }
+            else
+            {
+                return new Response<CartDisplayModel>()
+                {
+                    IsSuccess = false,
+                    Message = "No Detail Found",
+                    PassValue = temp,
+                };
+            }
+        }
+
         public Response<List<Cart>> OrderStationeries(int userID)
         {
             List<CartDisplayModel> tempCart = cartRepo.GetCartByUserID(userID);
@@ -67,13 +90,10 @@ namespace Project_Lab_PSD.Handlers
                 };
 
                 transactionHeaderRepo.AddTransactionHeader(th);
-                
-                TransactionDetail td = new TransactionDetail()
-                {
-                    TransactionID = transactionHeaderRepo.GetLastTransactionHeaderID(),
-                    StationeryID = cart.StationeryID,
-                    Quantity = cart.Quantity,
-                };
+
+                int tdID = transactionHeaderRepo.GetLastTransactionHeaderID();
+
+                TransactionDetail td = TransactionDetailFactory.create_transaction_detail(tdID,cart.StationeryID,cart.Quantity);
 
                 transactionDetailRepo.AddTransactionDetail(td);
             }

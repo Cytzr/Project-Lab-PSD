@@ -59,9 +59,10 @@ namespace Project_Lab_PSD.Repositories
                 _context.TransactionDetails.Add(transactionDetail);
                 _context.SaveChanges();
             }
-            catch
+            catch (Exception ex) 
             {
-                throw new Exception();
+            
+                throw ex;
             }
         }
     }
