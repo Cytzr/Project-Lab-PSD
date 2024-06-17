@@ -54,8 +54,9 @@ namespace Project_Lab_PSD.Handlers
             };
         }
 
-        public Response<Cart> AddCart (Cart cart)
+        public Response<Cart> AddCart (int userID, int stationeryID, int quantity)
         {
+            Cart cart = CartFactory.create_cart(userID, stationeryID, quantity);
             cartRepo.InsertCart(cart);
             return new Response<Cart>()
             {

@@ -26,7 +26,9 @@ namespace Project_Lab_PSD.Repositories
         {
             try
             {
-                return _context.TransactionHeaders.LastOrDefault().TransactionID;
+                return (from a in _context.TransactionHeaders
+                        orderby a.TransactionID descending
+                        select a.TransactionID).FirstOrDefault();
             }
             catch
             {
