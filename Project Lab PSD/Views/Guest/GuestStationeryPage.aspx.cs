@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Project_Lab_PSD.Models;
+using Project_Lab_PSD.Repositories;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +13,7 @@ namespace Project_Lab_PSD.Views.Guest
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+           
         }
     }
 }
