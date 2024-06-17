@@ -19,7 +19,7 @@
     </div>
 
     <div>
-        <asp:Button ID="btnAddToCart" runat="server" Text="Add to Cart" OnClick="btnAddToCart_Click" />
+        <asp:button id="btnaddtocart" runat="server" text="add to cart" onclick="btnaddtocart_click" />
     </div>
 
     <div>
