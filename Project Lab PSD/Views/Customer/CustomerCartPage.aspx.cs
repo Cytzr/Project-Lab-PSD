@@ -17,6 +17,9 @@ namespace Project_Lab_PSD.Views.Customer
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            //if (!IsPostBack)
+            //{
+            //    int userID = int.Parse(Request.Cookies["user_cookie"]?.Value);
             if (!IsPostBack)
             {
                 int userID = int.Parse(Request.Cookies["user_cookie"]?.Value);
@@ -24,15 +27,23 @@ namespace Project_Lab_PSD.Views.Customer
                 Response<List<CartDisplayModel>> response = customerHandler.ViewCarts(userID);
                 cartGrid.DataSource = response.PassValue;
 
-                if (response != null)
-                {
-                    cartGrid.DataBind();
-                }
-                else
-                {
-                    Console.WriteLine("No Data");
-                }
-            }
+            //    Response<List<CartDisplayModel>> response = customerHandler.ViewCarts(userID);
+            //    cartGrid.DataSource = response.PassValue;
+
+            //    if (response != null)
+            //    {
+            //        cartGrid.DataBind();
+            //    }
+            //    else
+            //    {
+            //        Console.WriteLine("No Data");
+            //    }
+            //}
+
+            TransactionHeaderRepository transactionHeaderRepo = new TransactionHeaderRepository();
+            //int userID = int.Parse(Request.Cookies["user_cookie"].Value);
+            int tdID = transactionHeaderRepo.GetLastTransactionHeaderID();
+            Response.Write($"<script>alert({tdID});</script>");
         }
 
         protected void cartGrid_RowUpdating(object sender,  GridViewUpdateEventArgs e)
