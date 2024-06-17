@@ -55,15 +55,22 @@ namespace Project_Lab_PSD.Repositories
             }
         }
 
-        public MsStationery UpdateStationery(int id, MsStationery stationery)
+        public MsStationery UpdateStationery(MsStationery stationery)
         {
-            MsStationery temp = (from a in _context.MsStationeries
-                                 where a.StationeryID == id
-                                 select a).FirstOrDefault();
-            temp.StationeryPrice = stationery.StationeryPrice;
-            temp.StationeryName = stationery.StationeryName;
-            _context.SaveChanges();
-            return temp;
+            try
+            {
+                MsStationery temp = (from a in _context.MsStationeries
+                                     where a.StationeryID == stationery.StationeryID
+                                     select a).FirstOrDefault();
+                temp.StationeryPrice = stationery.StationeryPrice;
+                temp.StationeryName = stationery.StationeryName;
+                _context.SaveChanges();
+                return temp;
+            }
+            catch
+            {
+                return null;
+            }
         }
 
         public MsStationery DeleteStationery(int stationeryID)
