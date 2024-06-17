@@ -70,12 +70,7 @@ namespace Project_Lab_PSD.Handlers
 
                 int tdID = transactionHeaderRepo.GetLastTransactionHeaderID();
 
-                TransactionDetail td = new TransactionDetail()
-                {
-                    TransactionID = tdID,
-                    StationeryID = cart.StationeryID,
-                    Quantity = cart.Quantity,
-                };
+                TransactionDetail td = TransactionDetailFactory.create_transaction_detail(tdID,cart.StationeryID,cart.Quantity);
 
                 transactionDetailRepo.AddTransactionDetail(td);
             }
