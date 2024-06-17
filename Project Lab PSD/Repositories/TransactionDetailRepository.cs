@@ -22,13 +22,21 @@ namespace Project_Lab_PSD.Repositories
             }
         }
 
-        public List<TransactionDetail> GetTransactionDetailByTransactionID(int transactionID)
+        public List<TransactionDetailWithStationery> GetTransactionDetailByTransactionID(int transactionID)
         {
             try
             {
                 return (from a in _context.TransactionDetails
                         where a.TransactionID == transactionID
-                        select a).ToList();
+                        join b in _context.MsStationeries on a.StationeryID equals b.StationeryID
+                        select new TransactionDetailWithStationery()
+                        {
+                            TransactionID = a.TransactionID,
+                            Quantity = a.Quantity,
+                            StationeryID = a.StationeryID,
+                            StationeryName = b.StationeryName,
+                            StationeryPrice = b.StationeryPrice,
+                        }).ToList();
             }
             catch
             {

@@ -146,6 +146,7 @@
     <Compile Include="Models\TransactionDetail.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\TransactionDetailWithStationery.cs" />
     <Compile Include="Models\TransactionHeader.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
