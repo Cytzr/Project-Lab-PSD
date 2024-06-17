@@ -20,8 +20,8 @@ namespace Project_Lab_PSD.Views.Customer
         {
             if (!IsPostBack)
             {
-                int userID = 2;
-                
+                int userID = int.Parse(Request.Cookies["user_cookie"]?.Value);
+
                 Response<List<CartDisplayModel>> response = customerCont.ViewCarts(userID);
                 cartGrid.DataSource = response.PassValue;
 
@@ -68,11 +68,11 @@ namespace Project_Lab_PSD.Views.Customer
 
         protected void Checkout_Click(object sender, EventArgs e)
         {
-            int userID = 2;
+            int userID = int.Parse(Request.Cookies["user_cookie"]?.Value);
             Response<List<Cart>> response = customerCont.OrderStationeries(userID);
             if(response.IsSuccess)
             {
-                Response.Redirect("~/Views/Customer/CustomerTransactionHistory.aspx");
+                Response.Redirect("~/Views/Customer/CustomerTransactionHistoryPage.aspx");
             } else
             {
                 lbl_error.Text = response.Message;
