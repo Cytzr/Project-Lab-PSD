@@ -39,9 +39,7 @@ namespace Project_Lab_PSD.Views.Customer
         {
             GridViewRow row = historyGrid.Rows[e.NewSelectedIndex];
 
-            string name = row.Cells[0].Text.ToString();
-            Response<MsStationery> response = customerHandler.GetStationaryByName(name);
-            string id = response.PassValue.StationeryID.ToString();
+            string id = row.Cells[0].Text.ToString();
 
             Response.Redirect("~/Views/Customer/CustomerDetailStationer.aspx?ID=" + id);
         }
