@@ -24,7 +24,7 @@ namespace Project_Lab_PSD.Views.Customer
         {
             int userID = int.Parse(Request.Cookies["user_cookie"]?.Value);
             int transactionID = Convert.ToInt32(Request["ID"]);
-            Response<List<TransactionDetail>> response = customerHandler.ViewTransactionDetailByTransactionID(transactionID);
+            Response<List<TransactionDetailWithStationery>> response = customerHandler.ViewTransactionDetailByTransactionID(transactionID);
             detailGrid.DataSource = response.PassValue;
 
             if (response.PassValue != null)
