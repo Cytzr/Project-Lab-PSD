@@ -43,7 +43,7 @@ namespace Project_Lab_PSD.Views.Customer
             Response<MsStationery> response = customerHandler.GetStationaryByName(name);
             string id = response.PassValue.StationeryID.ToString();
 
-            Response.Redirect("~/Views/Customer/CustomerStationeryDetails.aspx?ID=" + id);
+            Response.Redirect("~/Views/Customer/CustomerStationeryDetail.aspx?ID=" + id);
         }
     }
 }

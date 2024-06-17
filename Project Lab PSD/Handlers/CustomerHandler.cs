@@ -109,18 +109,6 @@ namespace Project_Lab_PSD.Handlers
             };
         }
 
-        public Response<List<CartDisplayModel>> GetCartByStationeryID(int stationeryID)
-        {
-            List<CartDisplayModel> temp = cartRepo.GetCartByStationeryID(stationeryID);
-
-            return new Response<List<CartDisplayModel>>()
-            {
-                IsSuccess = true,
-                Message = "Sent",
-                PassValue = temp,
-            };
-        }
-
         public Response<Cart> UpdateCart(int userID, int stationeryID, int quantity)
         {
             Cart cart = CartFactory.create_cart(userID, stationeryID, quantity);
