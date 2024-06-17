@@ -27,10 +27,10 @@ namespace Project_Lab_PSD.Repositories
             _context.SaveChangesAsync();
         }
 
-        public MsStationery UpdateStationery(MsStationery stationery)
+        public MsStationery UpdateStationery(int id, MsStationery stationery)
         {
             MsStationery temp = (from a in _context.MsStationeries
-                                 where a.StationeryID == stationery.StationeryID
+                                 where a.StationeryID == id
                                  select a).FirstOrDefault();
             temp.StationeryPrice = stationery.StationeryPrice;
             temp.StationeryName = stationery.StationeryName;

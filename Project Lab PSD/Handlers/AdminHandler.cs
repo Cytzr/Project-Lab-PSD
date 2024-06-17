@@ -14,6 +14,8 @@ namespace Project_Lab_PSD.Handlers
         StationeryRepository stationeryRepo = new StationeryRepository();
         UserRepository userRepo = new UserRepository();
         TransactionReportRepository transactionReportRepo = new TransactionReportRepository();
+        TransactionHeaderRepository transactionHeaderRepo = new TransactionHeaderRepository();
+        TransactionDetailRepository transactionDetailRepo = new TransactionDetailRepository();
         public Response<List<MsStationery>> ViewStationeries()
         {
             List<MsStationery> temp = stationeryRepo.GetAllStationery();
@@ -22,6 +24,17 @@ namespace Project_Lab_PSD.Handlers
                 IsSuccess = true,
                 Message = "All Stationery Sent",
                 PassValue = temp,
+            };
+        }
+
+        public Response<MsStationery> ViewStationeryById(int id) 
+        {
+            MsStationery response = stationeryRepo.GetStationeryByID(id);
+            return new Response<MsStationery>()
+            {
+                IsSuccess = true,
+                Message = "All Stationery Sent",
+                PassValue = response,
             };
         }
 
@@ -38,10 +51,10 @@ namespace Project_Lab_PSD.Handlers
             };
         }
 
-        public Response<MsStationery> UpdateStationery(string stationeryName, int stationeryPrice)
+        public Response<MsStationery> UpdateStationery(int stationeryId, string stationeryName, int stationeryPrice)
         {
             MsStationery stationery = MsStationeryFactory.create_stationery(stationeryName, stationeryPrice);
-            MsStationery updatedStationery = stationeryRepo.UpdateStationery(stationery);
+            MsStationery updatedStationery = stationeryRepo.UpdateStationery(stationeryId, stationery);
 
             if(updatedStationery != null)
             {
@@ -139,6 +152,38 @@ namespace Project_Lab_PSD.Handlers
                 IsSuccess = false,
                 Message = "No Transaction Report Found",
                 PassValue = null,
+            };
+        }
+        public Response<List<TransactionHeader>> ViewTransactionHeader()
+        {
+            List<TransactionHeader> response = transactionHeaderRepo.GetAllTransactionHeader();
+            return new Response<List<TransactionHeader>>()
+            {
+                IsSuccess = true,
+                Message = "All Transaction Report Sent",
+                PassValue = response,
+            };
+        }
+
+        public Response<List<TransactionDetail>> ViewTransactionDetail()
+        {
+            List<TransactionDetail> response = transactionDetailRepo.GetAllTransactionDetail();
+            return new Response<List<TransactionDetail>>()
+            {
+                IsSuccess = true,
+                Message = "All Transaction Report Sent",
+                PassValue = response,
+            };
+        }
+
+        public Response<List<TransactionDetail>> ViewTransactionDetailByTransactionID(int transactionID)
+        {
+            List<TransactionDetail> response = transactionDetailRepo.GetTransactionDetailByTransactionID(transactionID);
+            return new Response<List<TransactionDetail>>()
+            {
+                IsSuccess = true,
+                Message = "All Transaction Report Sent",
+                PassValue = response,
             };
         }
     }

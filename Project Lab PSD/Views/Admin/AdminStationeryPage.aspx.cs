@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -50,6 +51,19 @@ namespace Project_Lab_PSD.Views.Admin
         protected void insert_Click(object sender, EventArgs e)
         {
             Response.Redirect("InsertStationery.aspx");
+        }
+
+        protected void GridView1_RowUpdating(object sender, GridViewUpdateEventArgs e)
+        {
+            GridViewRow row = GridView1.Rows[e.RowIndex];
+
+            string stringId = row.Cells[0].Text.ToString();
+
+            int id = 0;
+
+            int.TryParse(stringId, out id);
+
+            Response.Redirect($"UpdateStationery.aspx?StationeryID={id}");
         }
     }   
 }
