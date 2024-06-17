@@ -38,7 +38,7 @@ namespace Project_Lab_PSD.Views.Guest
             else
             {
                 HttpCookie cookie = new HttpCookie("user_cookie");
-                cookie.Value = user.UserName;
+                cookie.Value = user.UserID.ToString();
                 cookie.Expires = DateTime.Now.AddDays(1);
                 Response.Cookies.Add(cookie);
                 Session["user"] = user;

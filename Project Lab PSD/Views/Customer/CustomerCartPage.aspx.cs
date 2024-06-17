@@ -19,7 +19,8 @@ namespace Project_Lab_PSD.Views.Customer
         {
             if (!IsPostBack)
             {
-                int userID = 2;
+                int userID = int.Parse(Request.Cookies["user_cookie"]?.Value);
+           
                 Response<List<CartDisplayModel>> response = customerHandler.ViewCarts(userID);
                 cartGrid.DataSource = response.PassValue;
 
@@ -31,6 +32,19 @@ namespace Project_Lab_PSD.Views.Customer
                 {
                     Console.WriteLine("No Data");
                 }
+            }
+        }
+
+        protected void Checkout_Click(object sender, EventArgs e)
+        {
+            int userID = int.Parse(Request.Cookies["user_cookie"].Value);
+            Response<List<Cart>> response = customerHandler.OrderStationeries(userID);
+            if(response.IsSuccess)
+            {
+                Response.Redirect("~/Views/Customer/CustomerTransactionHistory.aspx");
+            } else
+            {
+                lbl_error.Text = response.Message;
             }
         }
     }
