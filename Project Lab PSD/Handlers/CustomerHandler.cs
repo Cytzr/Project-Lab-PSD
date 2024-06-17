@@ -238,20 +238,20 @@ namespace Project_Lab_PSD.Handlers
         }
 
 
-        public Response<List<TransactionDetail>> ViewTransactionDetailByTransactionID(int transactionID)
+        public Response<List<TransactionDetailWithStationery>> ViewTransactionDetailByTransactionID(int transactionID)
         {
-            List<TransactionDetail> temp = transactionDetailRepo.GetTransactionDetailByTransactionID(transactionID);
+            List<TransactionDetailWithStationery> temp = transactionDetailRepo.GetTransactionDetailByTransactionID(transactionID);
 
             if (temp != null)
             {
-                return new Response<List<TransactionDetail>>()
+                return new Response<List<TransactionDetailWithStationery>>()
                 {
                     IsSuccess = true,
                     Message = "All Transaction Detail Sent",
                     PassValue = temp,
                 };
             }
-            return new Response<List<TransactionDetail>>()
+            return new Response<List<TransactionDetailWithStationery>>()
             {
                 IsSuccess = false,
                 Message = "No Transaction Detail Found",
