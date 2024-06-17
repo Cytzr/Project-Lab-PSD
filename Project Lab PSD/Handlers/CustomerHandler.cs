@@ -92,16 +92,16 @@ namespace Project_Lab_PSD.Handlers
         {
             List<CartDisplayModel> tempCart = cartRepo.GetCartByUserID(userID);
 
-            foreach (CartDisplayModel cart in tempCart)
-            {
+           
                 TransactionHeader th = new TransactionHeader()
                 {
-                    UserID = cart.UserID,
+                    UserID = userID,
                     TransactionDate = DateTime.Now,
                 };
 
                 transactionHeaderRepo.AddTransactionHeader(th);
-
+            foreach (CartDisplayModel cart in tempCart)
+            {
                 int tdID = transactionHeaderRepo.GetLastTransactionHeaderID();
 
                 TransactionDetail td = TransactionDetailFactory.create_transaction_detail(tdID,cart.StationeryID,cart.Quantity);

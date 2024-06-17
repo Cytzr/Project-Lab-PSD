@@ -42,7 +42,7 @@ namespace Project_Lab_PSD.Views.Guest
                 cookie.Expires = DateTime.Now.AddDays(1);
                 Response.Cookies.Add(cookie);
                 Session["user"] = user;
-                if (user.UserRole == "customer")
+                if (user.UserRole == "Customer")
                 {
                     Response.Redirect("~/Views/Customer/CustomerStationeryPage.aspx");
                 }
