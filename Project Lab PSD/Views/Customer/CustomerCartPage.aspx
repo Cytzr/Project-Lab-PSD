@@ -5,7 +5,7 @@
 
     <h1>Cart</h1>
 
-    <asp:GridView ID="cartGrid" runat="server" AutoGenerateColumns ="False" OnRowDeleting="cartGrid_RowDelete" >
+    <asp:GridView ID="cartGrid" runat="server" AutoGenerateColumns ="False" >
         <Columns>
 
             <asp:BoundField DataField="StationeryName" HeaderText="Name" SortExpression="StationeryName" />
@@ -18,7 +18,7 @@
     </asp:GridView>
 
     <div>
-        <asp:Button ID="Checkout" runat="server" Text="Checkout" />
+        <asp:Button ID="Checkout" runat="server" Text="Checkout" onClick="Checkout_Click"/>
     </div>
 
     <div>
