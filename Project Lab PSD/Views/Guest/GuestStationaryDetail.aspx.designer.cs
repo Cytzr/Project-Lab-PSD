@@ -7,38 +7,47 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Project_Lab_PSD.Views.Customer
+namespace Project_Lab_PSD.Views.Guest
 {
 
 
-    public partial class CustomerCartPage
+    public partial class GuestStationaryDetail
     {
 
         /// <summary>
-        /// cartGrid control.
+        /// ProdName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView cartGrid;
+        protected global::System.Web.UI.WebControls.Label ProdName;
 
         /// <summary>
-        /// Checkout control.
+        /// lblStationeryName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Checkout;
+        protected global::System.Web.UI.WebControls.Label lblStationeryName;
 
         /// <summary>
-        /// lbl_error control.
+        /// ProdPrice control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_error;
+        protected global::System.Web.UI.WebControls.Label ProdPrice;
+
+        /// <summary>
+        /// lblStationeryPrice control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblStationeryPrice;
     }
 }

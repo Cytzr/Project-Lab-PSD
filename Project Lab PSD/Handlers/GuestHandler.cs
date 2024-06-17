@@ -4,6 +4,7 @@ using Project_Lab_PSD.Repositories;
 using Project_Lab_PSD.Response;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 
@@ -38,7 +39,8 @@ namespace Project_Lab_PSD.Handlers
         public Response<MsUser> Register(string userName, string userGender, DateTime userDOB, string userPhone, string userAddress, string userPassword, string userRole)
         {
             MsUser temp = MsUserFactory.create_user(userName, userGender, userDOB, userPhone, userAddress, userPassword, userRole);
-
+            Debug.WriteLine(temp);
+            userRepo.AddUser(temp);
             return new Response<MsUser>()
             {
                 IsSuccess = true,

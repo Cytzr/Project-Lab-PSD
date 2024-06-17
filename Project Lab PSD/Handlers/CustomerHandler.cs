@@ -30,6 +30,30 @@ namespace Project_Lab_PSD.Handlers
             };
         }
 
+        public Response<MsStationery> GetStationeryById(int stationeryId)
+        {
+            MsStationery temp = stationeryRepo.GetStationeryByID(stationeryId);
+
+            return new Response<MsStationery>()
+            {
+                IsSuccess = true,
+                Message = "All Stationery Sent",
+                PassValue = temp,
+            };
+        }
+
+        public Response<MsStationery> GetStationaryByName(string stationeryName)
+        {
+            MsStationery temp = stationeryRepo.GetStationeryByName(stationeryName);
+
+            return new Response<MsStationery>()
+            {
+                IsSuccess = true,
+                Message = "Stationery Name Sent",
+                PassValue = temp,
+            };
+        }
+
         public Response<List<Cart>> OrderStationeries(int userID)
         {
             List<CartDisplayModel> tempCart = cartRepo.GetCartByUserID(userID);
@@ -43,7 +67,7 @@ namespace Project_Lab_PSD.Handlers
                 };
 
                 transactionHeaderRepo.AddTransactionHeader(th);
-
+                
                 TransactionDetail td = new TransactionDetail()
                 {
                     TransactionID = transactionHeaderRepo.GetLastTransactionHeaderID(),
@@ -81,6 +105,18 @@ namespace Project_Lab_PSD.Handlers
             {
                 IsSuccess = true,
                 Message = "All User Cart Sent",
+                PassValue = temp,
+            };
+        }
+
+        public Response<List<CartDisplayModel>> GetCartByStationeryID(int stationeryID)
+        {
+            List<CartDisplayModel> temp = cartRepo.GetCartByStationeryID(stationeryID);
+
+            return new Response<List<CartDisplayModel>>()
+            {
+                IsSuccess = true,
+                Message = "Sent",
                 PassValue = temp,
             };
         }

@@ -12,29 +12,57 @@ namespace Project_Lab_PSD.Repositories
 
         public List<TransactionDetail> GetAllTransactionDetail()
         {
-            return _context.TransactionDetails.ToList();
+            try
+            {
+                return _context.TransactionDetails.ToList();
+            }
+            catch
+            {
+                return null;
+            }
         }
 
         public List<TransactionDetail> GetTransactionDetailByTransactionID(int transactionID)
         {
-            return (from a in _context.TransactionDetails
-                    where a.TransactionID == transactionID
-                    select a).ToList();
+            try
+            {
+                return (from a in _context.TransactionDetails
+                        where a.TransactionID == transactionID
+                        select a).ToList();
+            }
+            catch
+            {
+                return null;
+            }
         }
 
         public List<TransactionDetail> GetTransactionDetailByUserID(int userID)
         {
-            return (from a in _context.TransactionDetails
-                    join b in _context.TransactionHeaders
-                    on a.TransactionID equals b.TransactionID
-                    where b.UserID == userID
-                    select a).ToList();
+            try
+            {
+                return (from a in _context.TransactionDetails
+                        join b in _context.TransactionHeaders
+                        on a.TransactionID equals b.TransactionID
+                        where b.UserID == userID
+                        select a).ToList();
+            }
+            catch
+            {
+                return null;
+            }
         }
 
         public void AddTransactionDetail(TransactionDetail transactionDetail)
         {
-            _context.TransactionDetails.Add(transactionDetail);
-            _context.SaveChanges();
+            try
+            {
+                _context.TransactionDetails.Add(transactionDetail);
+                _context.SaveChanges();
+            }
+            catch
+            {
+                throw new Exception();
+            }
         }
     }
 }
