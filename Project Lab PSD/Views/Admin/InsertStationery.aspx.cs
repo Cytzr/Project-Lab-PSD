@@ -24,12 +24,19 @@ namespace Project_Lab_PSD.Views.Admin
             string productName = nameVal.Text.Trim();
             string strProductPrice = priceVal.Text.Trim();
 
+
             int productPrice = int.Parse(strProductPrice);
 
             Response<MsStationery> response = adminController.insertProduct(productName, productPrice);
 
-            Msg.Text = "Product added successfully.";
-
+            if (response.IsSuccess)
+            {
+                Msg.Text = "Product added successfully.";
+            }
+            else
+            {
+                Msg.Text = "Product added failed.";
+            }
         }
     }
 }

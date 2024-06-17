@@ -24,7 +24,16 @@ namespace Project_Lab_PSD.Views.Admin
             CrystalReportViewer1.ReportSource = response;
 
             DataSet1 value = crystalReportData(adminHandler.ViewTransactionHeader().PassValue);
-            response.SetDataSource(value);
+
+            if(value != null)
+            {
+                response.SetDataSource(value);
+            }
+            else
+            {
+                Response.Write("<script>alert('no data');</script>");
+                Response.Redirect("AdminStationeryPage.aspx");
+            }
         }
 
         protected DataSet1 crystalReportData(List<TransactionHeader> transactionHeaders)

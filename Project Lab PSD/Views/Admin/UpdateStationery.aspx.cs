@@ -38,6 +38,7 @@ namespace Project_Lab_PSD.Views.Admin
             else
             {
                 Response.Write("<script>alert('Stationery not found');</script>");
+                Response.Redirect("AdminStationeryPage.aspx");
             }
         }
 
@@ -59,7 +60,7 @@ namespace Project_Lab_PSD.Views.Admin
             }
             else
             {
-                Msg.Text = "Product update failed   ";
+                Msg.Text = "Product update failed";
             }
         }
     }
