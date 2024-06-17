@@ -14,7 +14,7 @@ namespace Project_Lab_PSD.Views.Customer
 {
     public partial class CustomerStationeryPage : System.Web.UI.Page
     {
-        CustomerController customerCont = new CustomerController();
+        CustomerController customerController = new CustomerController();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -24,7 +24,7 @@ namespace Project_Lab_PSD.Views.Customer
         }
         protected void BindStationeryData()
         {
-            Response<List<MsStationery>> response = customerCont.ViewStationeries();
+            Response<List<MsStationery>> response = customerController.ViewStationeries();
             stationeryGrid.DataSource = response.PassValue;
 
             if (response != null)
@@ -41,7 +41,7 @@ namespace Project_Lab_PSD.Views.Customer
             GridViewRow row = stationeryGrid.Rows[e.NewSelectedIndex];
 
             string name = row.Cells[0].Text.ToString();
-            Response<MsStationery> response = customerCont.GetStationaryByName(name);
+            Response<MsStationery> response = customerController.GetStationaryByName(name);
             string id = response.PassValue.StationeryID.ToString();
 
             Response.Redirect("~/Views/Customer/CustomerDetailStationer.aspx?ID=" + id);

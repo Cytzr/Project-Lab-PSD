@@ -13,28 +13,33 @@ namespace Project_Lab_PSD.Views.Customer
 {
     public partial class CartUpdate : System.Web.UI.Page
     {
-        CustomerController customerCont = new CustomerController();
+        CustomerController customerController = new CustomerController();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
                 int userID = int.Parse(Request.Cookies["user_cookie"]?.Value);
-                int id = Convert.ToInt32(Request["ID"]);
-                Response<CartDisplayModel> response = customerCont.GetOneCartDisplayModel(userID, id);
-                CartDisplayModel user2 = response.PassValue;
+                int id = Convert.ToInt32(Request["CartID"]);
+                Response<CartDisplayModel> cart = customerController.GetOneCartDisplayModel(userID, id);
 
-                lblStationeryName.Text = user2.StationeryName;
-                lblStationeryPrice.Text = user2.StationeryPrice.ToString();
-                txtQuantity.Text = user2.Quantity.ToString();
+                lblStationeryName.Text = cart.PassValue.StationeryName;
+                lblStationeryPrice.Text = cart.PassValue.StationeryPrice.ToString();
+                txtQuantity.Text = cart.PassValue.Quantity.ToString();
             }
         }
 
         protected void btnUpdateCart_click(object sender, EventArgs e)
         {
             int userID = int.Parse(Request.Cookies["user_cookie"]?.Value);
-            int id = Convert.ToInt32(Request["ID"]);
+            int id = Convert.ToInt32(Request["CartID"]);
             int quantity = Convert.ToInt32(txtQuantity.Text);
-            Response<Cart> response = customerCont.UpdateCart(userID, id, quantity);
+
+            Response<Cart> response = customerController.UpdateCart(userID, id, quantity);
+
+            if (response.IsSuccess)
+            {
+                lblMessage.Text = "Cart Updated Successfully";
+            }
         }
     }
 }

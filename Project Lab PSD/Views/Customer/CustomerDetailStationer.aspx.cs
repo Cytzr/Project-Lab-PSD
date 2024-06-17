@@ -13,17 +13,17 @@ namespace Project_Lab_PSD.Views.Customer
 {
     public partial class CustomerDetailStationer : System.Web.UI.Page
     {
-        CustomerController customerCont = new CustomerController();
+        CustomerController customerController = new CustomerController();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
                 int id = Convert.ToInt32(Request["ID"]);
-                Response<MsStationery> response = customerCont.GetStationeryById(id);
-                MsStationery user2 = response.PassValue;
+                Response<MsStationery> response = customerController.GetStationeryById(id);
+                MsStationery user = response.PassValue;
 
-                lblStationeryName.Text = user2.StationeryName;
-                lblStationeryPrice.Text = user2.StationeryPrice.ToString();
+                lblStationeryName.Text = user.StationeryName;
+                lblStationeryPrice.Text = user.StationeryPrice.ToString();
             }
         }
         protected void btnAddToCart_Click(object sender, EventArgs e)

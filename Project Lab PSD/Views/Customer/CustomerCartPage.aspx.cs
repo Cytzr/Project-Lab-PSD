@@ -9,12 +9,13 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Xml.Linq;
 
 namespace Project_Lab_PSD.Views.Customer
 {
     public partial class CustomerCartPage : System.Web.UI.Page
     {
-        CustomerController customerCont = new CustomerController();
+        CustomerController customerController = new CustomerController();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -22,7 +23,7 @@ namespace Project_Lab_PSD.Views.Customer
             {
                 int userID = int.Parse(Request.Cookies["user_cookie"]?.Value);
 
-                Response<List<CartDisplayModel>> response = customerCont.ViewCarts(userID);
+                Response<List<CartDisplayModel>> response = customerController.ViewCarts(userID);
                 cartGrid.DataSource = response.PassValue;
 
                 if (response != null)
@@ -40,13 +41,13 @@ namespace Project_Lab_PSD.Views.Customer
         {
             GridViewRow row = cartGrid.Rows[e.RowIndex];
 
-            string stringId = row.Cells[0].Text.ToString();
+            string name = row.Cells[0].Text.ToString();
 
-            int id = 0;
+            Response<MsStationery> response = customerController.GetStationaryByName(name);
 
-            int.TryParse(stringId, out id);
+            string ID = response.PassValue.StationeryID.ToString();
 
-            Response.Redirect($"CartUpdate.aspx?CartID={id}");
+            Response.Redirect($"CartUpdate.aspx?CartID={ID}");
         }
 
         protected void cartGrid_RowDeleting(object sender, GridViewDeleteEventArgs e)
@@ -55,13 +56,13 @@ namespace Project_Lab_PSD.Views.Customer
 
             GridViewRow row = cartGrid.Rows[e.RowIndex];
 
-            string stringId = row.Cells[0].Text.ToString();
+            string name = row.Cells[0].Text.ToString();
 
-            int id = 0;
+            Response<MsStationery> response = customerController.GetStationaryByName(name);
 
-            int.TryParse(stringId, out id);
+            int id = response.PassValue.StationeryID;
 
-            Response<Cart> deleteResponse = customerCont.DeleteCart(userID, id);
+            Response<Cart> deleteResponse = customerController.DeleteCart(userID, id);
 
             Response.Redirect($"CustomerCartPage.aspx");
         }
@@ -69,7 +70,7 @@ namespace Project_Lab_PSD.Views.Customer
         protected void Checkout_Click(object sender, EventArgs e)
         {
             int userID = int.Parse(Request.Cookies["user_cookie"]?.Value);
-            Response<List<Cart>> response = customerCont.OrderStationeries(userID);
+            Response<List<Cart>> response = customerController.OrderStationeries(userID);
             if(response.IsSuccess)
             {
                 Response.Redirect("~/Views/Customer/CustomerTransactionHistoryPage.aspx");
