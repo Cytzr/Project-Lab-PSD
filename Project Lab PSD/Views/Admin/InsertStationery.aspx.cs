@@ -21,22 +21,49 @@ namespace Project_Lab_PSD.Views.Admin
         protected void insert_Click(object sender, EventArgs e)
         {
             adminController = new AdminController();
+
+            if(string.IsNullOrWhiteSpace(nameVal.Text.Trim()) && string.IsNullOrWhiteSpace(priceVal.Text.Trim()))
+            {
+                Msg.Text = "Please input the data";
+                return;
+            }
+
             string productName = nameVal.Text.Trim();
             string strProductPrice = priceVal.Text.Trim();
 
 
             int productPrice = int.Parse(strProductPrice);
+            
+            bool res = validate(productName, productPrice);
 
-            Response<MsStationery> response = adminController.insertProduct(productName, productPrice);
+            if(res == true)
+            {
+                Response<MsStationery> response = adminController.insertProduct(productName, productPrice);
+                if (response.IsSuccess)
+                {
+                    Msg.Text = "Product added successfully.";
+                }
+                else
+                {
+                    Msg.Text = "Product added failed.";
+                }
+            }
+        }
 
-            if (response.IsSuccess)
+        protected bool validate(string productName, int price)
+        {
+            if (string.IsNullOrWhiteSpace(productName) || productName.Length < 3 || productName.Length > 50)
             {
-                Msg.Text = "Product added successfully.";
+                Msg.Text = "Name must be filled and between 3 to 50 characters.";
+                return false;
             }
-            else
+
+            if (price < 2000)
             {
-                Msg.Text = "Product added failed.";
+                Msg.Text = "Price must be filled, numeric, and greater or equal to 2000.";
+                return false;
             }
+            return true;
         }
     }
 }
