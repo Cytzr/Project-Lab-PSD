@@ -85,6 +85,20 @@ namespace Project_Lab_PSD.Controllers
             };
         }
 
+        public bool findTransactionDetailByStationeryID (int id)
+        {
+            List<TransactionDetail> response = adminHandler.ViewTransactionDetail().PassValue;
+
+            foreach(TransactionDetail res in response)
+            {
+                if(res.StationeryID == id)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
         public int TotalValue(int transactionID)
         {
             List<TransactionDetail> response = adminHandler.ViewTransactionDetail().PassValue;

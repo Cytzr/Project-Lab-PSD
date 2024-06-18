@@ -50,7 +50,15 @@ namespace Project_Lab_PSD.Views.Admin
             string productName = newNameVal.Text.Trim();
             string strProductPrice = newPriceVal.Text.Trim();
 
+            if(string.IsNullOrWhiteSpace(newNameVal.Text.Trim()) && string.IsNullOrWhiteSpace(newPriceVal.Text.Trim()))
+            {
+                Msg.Text = "Please input the data";
+                return;
+            }
+
             int productPrice = int.Parse(strProductPrice);
+
+            bool res = validate(productName, productPrice);
 
             Response<MsStationery> response = adminController.updateProduct(id, productName, productPrice);
 
@@ -62,6 +70,22 @@ namespace Project_Lab_PSD.Views.Admin
             {
                 Msg.Text = "Product update failed";
             }
+        }
+
+        protected bool validate(string productName, int price)
+        {
+            if (string.IsNullOrWhiteSpace(productName) || productName.Length < 3 || productName.Length > 50)
+            {
+                Msg.Text = "Name must be filled and between 3 to 50 characters.";
+                return false;
+            }
+
+            if (price < 2000)
+            {
+                Msg.Text = "Price must be filled, numeric, and greater or equal to 2000.";
+                return false;
+            }
+            return true;
         }
     }
 }

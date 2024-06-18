@@ -43,7 +43,7 @@ namespace Project_Lab_PSD.Repositories
                 return (from a in _context.TransactionDetails
                         join b in _context.TransactionHeaders
                         on a.TransactionID equals b.TransactionID
-                        where b.UserID == userID
+                           where b.UserID == userID
                         select a).ToList();
             }
             catch

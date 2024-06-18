@@ -62,17 +62,19 @@ namespace Project_Lab_PSD.Repositories
                 throw new Exception();
             }
         }
-
-        public MsUser UpdateUserByID(MsUser user)
+        public MsUser UpdateUserByID(int id, MsUser user)
         {
             try
             {
-                MsUser temp = _context.MsUsers.Find(user.UserID);
+                MsUser temp = (from a in _context.MsUsers
+                               where a.UserID == id
+                               select a).FirstOrDefault();
                 temp.UserName = user.UserName;
                 temp.UserPhone = user.UserPhone;
                 temp.UserAddress = user.UserAddress;
                 temp.UserPassword = user.UserPassword;
-                temp.UserRole = user.UserRole;
+                temp.UserGender = user.UserGender;
+                temp.UserDOB = user.UserDOB;   
                 _context.SaveChanges();
                 return temp;
             }

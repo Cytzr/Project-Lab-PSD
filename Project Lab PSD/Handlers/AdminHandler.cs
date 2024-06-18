@@ -94,9 +94,9 @@ namespace Project_Lab_PSD.Handlers
             };
         }
 
-        public Response<MsUser> UpdateProfileByID(MsUser user)
+        public Response<MsUser> UpdateProfileByID(int id, MsUser user)
         {
-            MsUser updatedUser = userRepo.UpdateUserByID(user);
+            MsUser updatedUser = userRepo.UpdateUserByID(id, user);
             if (updatedUser != null)
             {
                 return new Response<MsUser>()

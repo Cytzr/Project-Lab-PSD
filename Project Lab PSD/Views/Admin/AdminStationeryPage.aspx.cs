@@ -16,6 +16,7 @@ namespace Project_Lab_PSD.Views.Admin
     public partial class AdminStationeryPage : System.Web.UI.Page
     {
         private AdminHandler adminHandler;
+        private AdminController adminController = new AdminController();
         protected void Page_Load(object sender, EventArgs e)
         {
             adminHandler = new AdminHandler();
@@ -43,9 +44,16 @@ namespace Project_Lab_PSD.Views.Admin
 
             int.TryParse(stringId, out id);
 
-            Response<MsStationery> deleteResponse = adminHandler.DeleteStationery(id);
+            bool res = adminController.findTransactionDetailByStationeryID(id);
 
-            Response.Redirect("AdminStationeryPage.aspx");
+            if (res == false)
+            {
+                Response<MsStationery> deleteResponse = adminHandler.DeleteStationery(id);
+                Response.Redirect("AdminStationeryPage.aspx");
+            } else
+            {
+                Response.Write("<script>alert('Item in a transaction');</script>");
+            }
         }
 
         protected void insert_Click(object sender, EventArgs e)
