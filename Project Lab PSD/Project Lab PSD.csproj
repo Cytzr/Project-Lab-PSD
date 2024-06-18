@@ -1340,8 +1340,9 @@
       <DependentUpon>UpdateStationery.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Views\Admin\UpdateStationery.aspx.designer.cs">
-      <DependentUpon>UpdateStationery.aspx</DependentUpon>
+	  <Compile Include="Views\Admin\UpdateStationery.aspx.designer.cs">
+		  <DependentUpon>UpdateStationery.aspx</DependentUpon>
+	  </Compile>
     <Compile Include="Views\Customer\CartUpdate.aspx.cs">
       <DependentUpon>CartUpdate.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

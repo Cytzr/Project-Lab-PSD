@@ -176,7 +176,7 @@ namespace Project_Lab_PSD.Handlers
             };
         }
 
-        public Response<List<TransactionDetail>> ViewTransactionDetailByTransactionID(int transactionID)
+       /* public Response<List<TransactionDetail>> ViewTransactionDetailByTransactionID(int transactionID)
         {
             List<TransactionDetail> response = transactionDetailRepo.GetTransactionDetailByTransactionID(transactionID);
             return new Response<List<TransactionDetail>>()
@@ -185,6 +185,6 @@ namespace Project_Lab_PSD.Handlers
                 Message = "All Transaction Report Sent",
                 PassValue = response,
             };
-        }
+        }*/
     }
 }

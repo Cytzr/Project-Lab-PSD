@@ -22,7 +22,7 @@ namespace Project_Lab_PSD.Views.Admin
         {
             adminController = new AdminController();
 
-            if(string.IsNullOrWhiteSpace(nameVal.Text.Trim()) && string.IsNullOrWhiteSpace(priceVal.Text.Trim()))
+            if(string.IsNullOrWhiteSpace(nameVal.Text.Trim()) || string.IsNullOrWhiteSpace(priceVal.Text.Trim()))
             {
                 Msg.Text = "Please input the data";
                 return;
@@ -31,7 +31,7 @@ namespace Project_Lab_PSD.Views.Admin
             string productName = nameVal.Text.Trim();
             string strProductPrice = priceVal.Text.Trim();
 
-
+            
             int productPrice = int.Parse(strProductPrice);
             
             bool res = validate(productName, productPrice);
