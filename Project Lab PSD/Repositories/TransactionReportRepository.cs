@@ -48,10 +48,7 @@ namespace Project_Lab_PSD.Repositories
                 List<TransactionReportModel> list = (from a in _context.TransactionHeaders
                                                      join b in _context.MsUsers
                                                      on a.UserID equals b.UserID
-                                                     join c in _context.TransactionDetails
-                                                     on a.TransactionID equals c.TransactionID
-                                                     join d in _context.MsStationeries
-                                                     on c.StationeryID equals d.StationeryID
+                                                  
                                                      where a.UserID == userID
                                                      select new TransactionReportModel()
                                                      {
@@ -59,11 +56,6 @@ namespace Project_Lab_PSD.Repositories
                                                          UserID = a.UserID,
                                                          UserName = b.UserName,
                                                          TransactionDate = a.TransactionDate,
-                                                         StationeryID = c.StationeryID,
-                                                         StationeryName = d.StationeryName,
-                                                         StationeryPrice = d.StationeryPrice,
-                                                         Quantity = c.Quantity,
-                                                         TotalPrice = c.Quantity * d.StationeryPrice,
                                                      }).ToList();
                 return list;
             }

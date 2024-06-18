@@ -11,7 +11,7 @@ namespace Project_Lab_PSD.Views.Customer
 {
 
 
-    public partial class CustomerUpdateStationery
+    public partial class CustomerDetailStationer
     {
 
         /// <summary>

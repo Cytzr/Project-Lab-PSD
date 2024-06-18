@@ -51,7 +51,14 @@ namespace Project_Lab_PSD.Views.Navbar
 
         protected void logout_btn_Click(object sender, EventArgs e)
         {
-
+            HttpCookie cookie = Request.Cookies["user_cookie"];
+            if (cookie != null)
+            {
+                cookie.Expires = DateTime.Now.AddDays(1);
+                Response.Cookies.Add(cookie);
+            }
+            Session.Remove("user");
+            Response.Redirect("~/Views/Guest/GuestLoginPage.aspx");
         }
     }
 }

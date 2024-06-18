@@ -10,7 +10,7 @@ using System.Web.UI.WebControls;
 
 namespace Project_Lab_PSD.Views.Customer
 {
-    public partial class CustomerTransactionHistoryPage : System.Web.UI.Page
+    public partial class CustomerTransactionDetail : System.Web.UI.Page
     {
         CustomerHandler customerHandler = new CustomerHandler();
         protected void Page_Load(object sender, EventArgs e)
@@ -23,26 +23,18 @@ namespace Project_Lab_PSD.Views.Customer
         protected void BindStationeryData()
         {
             int userID = int.Parse(Request.Cookies["user_cookie"]?.Value);
-            Response<List<TransactionReportModel>> response = customerHandler.ViewTransactionHistory(userID);
-            historyGrid.DataSource = response.PassValue;
-            
+            int transactionID = Convert.ToInt32(Request["ID"]);
+            Response<List<TransactionDetailWithStationery>> response = customerHandler.ViewTransactionDetailByTransactionID(transactionID);
+            detailGrid.DataSource = response.PassValue;
+
             if (response.PassValue != null)
             {
-                historyGrid.DataBind();
+                detailGrid.DataBind();
             }
             else
             {
                 Response.Write($"<script>alert('{userID}');</script>");
             }
-        }
-        protected void stationeryGrid_RowCommand(object sender, GridViewSelectEventArgs e)
-        {
-            GridViewRow row = historyGrid.Rows[e.NewSelectedIndex];
-
-            int id = int.Parse(row.Cells[0].Text);
-           
-
-            Response.Redirect("~/Views/Customer/CustomerTransactionDetail.aspx?ID=" + id);
         }
     }
 }

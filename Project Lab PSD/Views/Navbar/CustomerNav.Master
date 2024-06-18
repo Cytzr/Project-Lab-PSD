@@ -15,7 +15,7 @@
             <asp:Button ID="cart_btn" runat="server" Text="Cart" OnClick="cart_btn_Click" />
             <asp:Button ID="transactionsHistory_btn" runat="server" Text="Transactions History" OnClick="transactionsHistory_btn_Click" />
             <asp:Button ID="profile_btn" runat="server" Text="Profile" OnClick="profile_btn_Click" />
-            <asp:Button ID="logout_btn" runat="server" Text="Logout"/>
+            <asp:Button ID="logout_btn" runat="server" Text="Logout" OnClick="logout_btn_Click"/>
         </div>
         <div>
             <asp:ContentPlaceHolder ID="ContentBody" runat="server">

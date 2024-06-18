@@ -1229,9 +1229,12 @@
     <Content Include="Views\Admin\AdminTransactionReportPage.aspx" />
     <Content Include="Views\Admin\InsertStationery.aspx" />
     <Content Include="Views\Admin\UpdateStationery.aspx" />
+    <Content Include="Views\Customer\CartUpdate.aspx" />
     <Content Include="Views\Customer\CustomerCartPage.aspx" />
+    <Content Include="Views\Customer\CustomerDetailStationer.aspx" />
     <Content Include="Views\Customer\CustomerProfilePage.aspx" />
     <Content Include="Views\Customer\CustomerStationeryPage.aspx" />
+    <Content Include="Views\Customer\CustomerTransactionDetail.aspx" />
     <Content Include="Views\Customer\CustomerTransactionHistoryPage.aspx" />
     <Content Include="Views\Guest\GuestStationaryDetail.aspx" />
     <Content Include="Views\Guest\GuestStationeryPage.aspx" />
@@ -1291,6 +1294,7 @@
     <Compile Include="Models\TransactionDetail.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\TransactionDetailWithStationery.cs" />
     <Compile Include="Models\TransactionHeader.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -1338,6 +1342,12 @@
     </Compile>
     <Compile Include="Views\Admin\UpdateStationery.aspx.designer.cs">
       <DependentUpon>UpdateStationery.aspx</DependentUpon>
+    <Compile Include="Views\Customer\CartUpdate.aspx.cs">
+      <DependentUpon>CartUpdate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Customer\CartUpdate.aspx.designer.cs">
+      <DependentUpon>CartUpdate.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Customer\CustomerCartPage.aspx.cs">
       <DependentUpon>CustomerCartPage.aspx</DependentUpon>
@@ -1345,6 +1355,13 @@
     </Compile>
     <Compile Include="Views\Customer\CustomerCartPage.aspx.designer.cs">
       <DependentUpon>CustomerCartPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Customer\CustomerDetailStationer.aspx.cs">
+      <DependentUpon>CustomerDetailStationer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Customer\CustomerDetailStationer.aspx.designer.cs">
+      <DependentUpon>CustomerDetailStationer.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Customer\CustomerProfilePage.aspx.cs">
       <DependentUpon>CustomerProfilePage.aspx</DependentUpon>
@@ -1359,6 +1376,13 @@
     </Compile>
     <Compile Include="Views\Customer\CustomerStationeryPage.aspx.designer.cs">
       <DependentUpon>CustomerStationeryPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Customer\CustomerTransactionDetail.aspx.cs">
+      <DependentUpon>CustomerTransactionDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Customer\CustomerTransactionDetail.aspx.designer.cs">
+      <DependentUpon>CustomerTransactionDetail.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Customer\CustomerTransactionHistoryPage.aspx.cs">
       <DependentUpon>CustomerTransactionHistoryPage.aspx</DependentUpon>

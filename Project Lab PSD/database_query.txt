@@ -3,7 +3,8 @@
     [StationeryID] INT NOT NULL,
     [Quantity]     INT NOT NULL,
     CONSTRAINT [FK_Cart_ToMsUser] FOREIGN KEY ([UserID]) REFERENCES [dbo].[MsUser] ([UserID]),
-    CONSTRAINT [FK_Cart_ToMsStationery] FOREIGN KEY ([StationeryID]) REFERENCES [dbo].[MsStationery] ([StationeryID])
+    CONSTRAINT [FK_Cart_ToMsStationery] FOREIGN KEY ([StationeryID]) REFERENCES [dbo].[MsStationery] ([StationeryID]),
+    CONSTRAINT [FK_Cart_Primary] PRIMARY KEY CLUSTERED ([StationeryID] ASC, [UserID] ASC)
 );
 
 CREATE TABLE [dbo].[MsStationery] (
@@ -30,7 +31,8 @@ CREATE TABLE [dbo].[TransactionDetail] (
     [StationeryID]  INT NOT NULL,
     [Quantity]      INT NOT NULL,
     CONSTRAINT [FK_TransactionDetail_ToTransactionHeader] FOREIGN KEY ([TransactionID]) REFERENCES [dbo].[TransactionHeader] ([TransactionID]),
-    CONSTRAINT [FK_TransactionDetail_ToMsStationery] FOREIGN KEY ([StationeryID]) REFERENCES [dbo].[MsStationery] ([StationeryID])
+    CONSTRAINT [FK_TransactionDetail_ToMsStationery] FOREIGN KEY ([StationeryID]) REFERENCES [dbo].[MsStationery] ([StationeryID]),
+    CONSTRAINT [PK_TransactionDetail] PRIMARY KEY CLUSTERED ([StationeryID] ASC,[TransactionID] ASC)
 );
 
 CREATE TABLE [dbo].[TransactionHeader] (

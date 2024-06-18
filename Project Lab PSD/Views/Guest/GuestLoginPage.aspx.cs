@@ -10,6 +10,8 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Diagnostics.PerformanceData;
 using System.EnterpriseServices.CompensatingResourceManager;
+using System.Net;
+using System.Security.Policy;
 
 namespace Project_Lab_PSD.Views.Guest
 {
@@ -26,7 +28,12 @@ namespace Project_Lab_PSD.Views.Guest
         {
             string userName = txtUserName.Text;
             string password = txtPassword.Text;
-            
+            if (string.IsNullOrWhiteSpace(userName) || string.IsNullOrWhiteSpace(password))
+         
+            {
+                lblMessage.Text = "Please fill in all required fields.";
+                return;
+            }
             GuestHandler guestHandler = new GuestHandler();
             Response<MsUser> response = guestHandler.Login(userName, password);
             MsUser user = response.PassValue;
@@ -38,11 +45,11 @@ namespace Project_Lab_PSD.Views.Guest
             else
             {
                 HttpCookie cookie = new HttpCookie("user_cookie");
-                cookie.Value = user.UserName;
+                cookie.Value = user.UserID.ToString();
                 cookie.Expires = DateTime.Now.AddDays(1);
                 Response.Cookies.Add(cookie);
                 Session["user"] = user;
-                if (user.UserRole == "customer")
+                if (user.UserRole == "Customer")
                 {
                     Response.Redirect("~/Views/Customer/CustomerStationeryPage.aspx");
                 }

@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentBody" runat="server">
-
+    <asp:Panel ID="LoginPanel" runat="server" DefaultButton="Button1">
     <asp:Label ID="lblUserName" runat="server" Text="Username:"></asp:Label>
             <asp:TextBox ID="txtUserName" runat="server"></asp:TextBox>
     <br />
@@ -13,5 +13,5 @@
     <br />
             <asp:Label ID="lblMessage" runat="server"></asp:Label>
 
-
+         </asp:Panel>
 </asp:Content>

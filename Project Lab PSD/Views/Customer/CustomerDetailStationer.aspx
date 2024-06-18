@@ -1,8 +1,7 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Navbar/CustomerNav.Master" AutoEventWireup="true" CodeBehind="CustomerStationeryDetail.aspx.cs" Inherits="Project_Lab_PSD.Views.Customer.CustomerStationeryDetail" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Navbar/CustomerNav.Master" AutoEventWireup="true" CodeBehind="CustomerDetailStationer.aspx.cs" Inherits="Project_Lab_PSD.Views.Customer.CustomerDetailStationer" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentBody" runat="server">
-
     <h1>Stationery Detail</h1>
 
     <div>

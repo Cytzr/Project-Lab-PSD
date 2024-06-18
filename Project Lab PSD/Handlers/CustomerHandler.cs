@@ -54,26 +54,58 @@ namespace Project_Lab_PSD.Handlers
             };
         }
 
+        public Response<Cart> AddCart (int userID, int stationeryID, int quantity)
+        {
+            Cart cart = CartFactory.create_cart(userID, stationeryID, quantity);
+            cartRepo.InsertCart(cart);
+            return new Response<Cart>()
+            {
+                IsSuccess = true,
+                Message = "Cart Inserted",
+                PassValue = cart,
+            };
+        }
+
+        public Response<CartDisplayModel> GetOneCartDisplayModel(int userID, int stationeryID)
+        {
+            var temp = cartRepo.GetCartByBothCredential(userID, stationeryID);
+            if(temp == null)
+            {
+                return new Response<CartDisplayModel>()
+                {
+                    IsSuccess = true,
+                    Message = "Stationery Displayed",
+                    PassValue = temp,
+                };
+            }
+            else
+            {
+                return new Response<CartDisplayModel>()
+                {
+                    IsSuccess = false,
+                    Message = "No Detail Found",
+                    PassValue = temp,
+                };
+            }
+        }
+
         public Response<List<Cart>> OrderStationeries(int userID)
         {
             List<CartDisplayModel> tempCart = cartRepo.GetCartByUserID(userID);
 
-            foreach (CartDisplayModel cart in tempCart)
-            {
+           
                 TransactionHeader th = new TransactionHeader()
                 {
-                    UserID = cart.UserID,
+                    UserID = userID,
                     TransactionDate = DateTime.Now,
                 };
 
                 transactionHeaderRepo.AddTransactionHeader(th);
-                
-                TransactionDetail td = new TransactionDetail()
-                {
-                    TransactionID = transactionHeaderRepo.GetLastTransactionHeaderID(),
-                    StationeryID = cart.StationeryID,
-                    Quantity = cart.Quantity,
-                };
+            foreach (CartDisplayModel cart in tempCart)
+            {
+                int tdID = transactionHeaderRepo.GetLastTransactionHeaderID();
+
+                TransactionDetail td = TransactionDetailFactory.create_transaction_detail(tdID,cart.StationeryID,cart.Quantity);
 
                 transactionDetailRepo.AddTransactionDetail(td);
             }
@@ -206,20 +238,20 @@ namespace Project_Lab_PSD.Handlers
         }
 
 
-        public Response<List<TransactionDetail>> ViewTransactionDetailByTransactionID(int transactionID)
+        public Response<List<TransactionDetailWithStationery>> ViewTransactionDetailByTransactionID(int transactionID)
         {
-            List<TransactionDetail> temp = transactionDetailRepo.GetTransactionDetailByTransactionID(transactionID);
+            List<TransactionDetailWithStationery> temp = transactionDetailRepo.GetTransactionDetailByTransactionID(transactionID);
 
             if (temp != null)
             {
-                return new Response<List<TransactionDetail>>()
+                return new Response<List<TransactionDetailWithStationery>>()
                 {
                     IsSuccess = true,
                     Message = "All Transaction Detail Sent",
                     PassValue = temp,
                 };
             }
-            return new Response<List<TransactionDetail>>()
+            return new Response<List<TransactionDetailWithStationery>>()
             {
                 IsSuccess = false,
                 Message = "No Transaction Detail Found",
@@ -244,6 +276,25 @@ namespace Project_Lab_PSD.Handlers
             {
                 IsSuccess = false,
                 Message = "No Transaction Detail Found",
+                PassValue = null,
+            };
+        }
+        public Response<MsUser> UpdateProfileByID(int id, MsUser user)
+        {
+            MsUser updatedUser = userRepo.UpdateUserByID(id, user);
+            if (updatedUser != null)
+            {
+                return new Response<MsUser>()
+                {
+                    IsSuccess = true,
+                    Message = "User Updated",
+                    PassValue = updatedUser,
+                };
+            }
+            return new Response<MsUser>()
+            {
+                IsSuccess = false,
+                Message = "User Not Found",
                 PassValue = null,
             };
         }

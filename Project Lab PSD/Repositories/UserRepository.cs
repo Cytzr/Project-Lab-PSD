@@ -62,6 +62,7 @@ namespace Project_Lab_PSD.Repositories
                 throw new Exception();
             }
         }
+      
         public MsUser UpdateUserByID(int id, MsUser user)
         {
             try
@@ -74,6 +75,7 @@ namespace Project_Lab_PSD.Repositories
                 temp.UserAddress = user.UserAddress;
                 temp.UserPassword = user.UserPassword;
                 temp.UserGender = user.UserGender;
+
                 temp.UserDOB = user.UserDOB;   
                 _context.SaveChanges();
                 return temp;
