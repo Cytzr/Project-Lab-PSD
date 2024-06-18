@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -50,6 +51,12 @@ namespace Project_Lab_PSD.Views.Customer
             if (password != reEnterPassword)
             {
                 lblMessage.Text = "Passwords do not match.";
+                return;
+            }
+            Regex alphanumericRegex = new Regex("^[a-zA-Z0-9]*$");
+            if (!alphanumericRegex.IsMatch(password))
+            {
+                lblMessage.Text = "Password must be alphanumeric.";
                 return;
             }
             if (!DateTime.TryParse(dateValue.Text, out DateTime dateOfBirth) ||
